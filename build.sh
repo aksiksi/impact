@@ -12,7 +12,9 @@ mkdir dist/libs
 
 # Copy dep JARs to dist
 cp libs/jsoup-1.8.1.jar libs/scala-library.jar dist/libs
-cp target/MANIFEST.MF dist/
+cp MANIFEST.MF dist/
+
+# Copy generated class files from target
 cp -R target/scala-2.11/classes/* dist/
 
 cd dist/
@@ -26,4 +28,5 @@ zip -9 -r impact.zip libs/ app.jar
 # Clean up artifacts
 rm -rf com/ views/ MANIFEST.MF
 
+# Go back to root folder
 cd ..

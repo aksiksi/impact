@@ -1,0 +1,2 @@
+Main-Class: com.idealicious.App
+Class-Path: libs/scala-library.jar libs/jsoup-1.8.1.jar
