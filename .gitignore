@@ -1,0 +1,12 @@
+/RUNNING_PID
+/logs/
+/project/
+/project/*-shim.sbt
+/project/project/
+/project/target/
+/target/
+/dist
+/.idea
+/builds
+/.java-version
+/.DS_Store
