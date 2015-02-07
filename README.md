@@ -1,6 +1,6 @@
 ## Impact
 
-Download the latest version at the project's [Homepage](https://cyph0n.github.io/impact).
+Download the latest version at the project's [homepage](https://cyph0n.github.io/impact).
 
 ## Build
 
@@ -12,12 +12,13 @@ To build `impact` yourself, you will need the following:
 
 Once these are all installed, `cd` into the root directory and run the following in your terminal:
 
+```bash
 >> chmod +x build.sh
 >> ./build.sh
+```
 
 If everything works correctly, you should see `impact.zip` in `dist/`.
 
 ## Bugs and Help
 
-Submit a issue or contact me [@Cyph0n](https://twitter.com/Cyph0n).
-
+Submit an issue or contact me [@Cyph0n](https://twitter.com/Cyph0n).
