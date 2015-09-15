@@ -88,7 +88,7 @@ class ViewController {
 
     if (terms.filter(_.trim != "").length > 0) {
       // Return reference to partial ObservableList of results
-      resultsList = new ImpactSearch(terms, 10, this).call()
+      resultsList = new ImpactSearch(terms, 10).call()
 
       exportWarning.setText("")
 

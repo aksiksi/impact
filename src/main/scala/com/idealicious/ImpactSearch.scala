@@ -10,10 +10,10 @@ import scala.collection.JavaConverters._
 
 import org.jsoup._
 
-class ImpactSearch(val terms: Seq[String], val numThreads: Int, controller: ViewController) extends Task[ObservableList[Journal]] {
+class ImpactSearch(val terms: Seq[String], val numThreads: Int) extends Task[ObservableList[Journal]] {
   // Auxiliary constructor for one term
-  def this(term: String, numThreads: Int, controller: ViewController) =
-    this(Seq(term), numThreads, controller)
+  def this(term: String, numThreads: Int) =
+    this(Seq(term), numThreads)
 
   private val BASE_URL = "http://www.impact-factor.org/journal/"
 
