@@ -87,8 +87,9 @@ class ViewController {
     val terms = journalsList.getText().split("\n").toSeq
 
     if (terms.filter(_.trim != "").length > 0) {
-      // Return reference to partial ObservableList of results
-      resultsList = new ImpactSearch(terms, 10).call()
+      // Returns reference to partial ObservableList of results
+      val numThreads = Runtime.getRuntime.availableProcessors
+      resultsList = new ImpactSearch(terms, if (numThreads <= 4) numThreads else 4).call()
 
       exportWarning.setText("")
 
