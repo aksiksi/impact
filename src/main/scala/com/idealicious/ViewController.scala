@@ -15,6 +15,12 @@ import javafx.util.Callback
 import scala.collection.JavaConverters._
 
 class ViewController {
+  implicit def fun2CellCallback(f: CellDataFeatures[Journal, String] => SimpleStringProperty) = {
+    new Callback[CellDataFeatures[Journal, String], ObservableValue[String]] {
+      override def call(journal: CellDataFeatures[Journal, String]) = f(journal)
+    }
+  }
+
   @FXML
   private var pane: AnchorPane = _
 
@@ -25,7 +31,7 @@ class ViewController {
   private var journalsList: TextArea = _
 
   @FXML
-  var resultsTable: TableView[Journal] = _
+  private var resultsTable: TableView[Journal] = _
 
   private val titleColumn = new TableColumn[Journal, String]("Journal")
   private val scoreColumn = new TableColumn[Journal, Number]("Impact Factor")
@@ -52,21 +58,12 @@ class ViewController {
 
   @FXML
   private def initialize() = {
-    titleColumn.setCellValueFactory(new Callback[CellDataFeatures[Journal, String], ObservableValue[String]] {
-      override def call(journal: CellDataFeatures[Journal, String]) = {
-        new SimpleStringProperty(journal.getValue().title)
-      }
-    })
+    titleColumn.setCellValueFactory((j: CellDataFeatures[Journal, String]) => new SimpleStringProperty(j.getValue().title))
+    abbrevColumn.setCellValueFactory((j: CellDataFeatures[Journal, String]) => new SimpleStringProperty(j.getValue().abbrev))
 
     scoreColumn.setCellValueFactory(new Callback[CellDataFeatures[Journal, Number], ObservableValue[Number]] {
       override def call(journal: CellDataFeatures[Journal, Number]) = {
         new SimpleDoubleProperty(journal.getValue().score.get)
-      }
-    })
-
-    abbrevColumn.setCellValueFactory(new Callback[CellDataFeatures[Journal, String], ObservableValue[String]] {
-      override def call(journal: CellDataFeatures[Journal, String]) = {
-        new SimpleStringProperty(journal.getValue().abbrev)
       }
     })
 
